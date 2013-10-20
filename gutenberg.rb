@@ -23,8 +23,7 @@ class Predictor
     @sample = opts[:sample] || false
     load_books!
 
-    # TODO: We need some internal representation here.
-    puts @books
+    # TODO: We need some data structure(s) here.
   end
 
   # TODO Implement.
@@ -75,9 +74,14 @@ class Predictor
   end
 end
 
-predictor = Predictor.new(sample: true)
+puts "Loading books..."
 start_time = Time.now
+predictor = Predictor.new()
+puts "Loading books took #{Time.now - start_time} seconds."
+
+
 puts "Training..."
+start_time = Time.now
 predictor.train!
 puts "Training took #{Time.now - start_time} seconds."
 

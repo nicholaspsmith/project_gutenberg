@@ -45,6 +45,16 @@ class Predictor
   def predict(str)
   end
 
+  # TODO: Alternative project. Implement.
+  #
+  # Public: Prints out the n most-mentioned words in each category.
+  #
+  # n - Integer.
+  #
+  # Returns nothing.
+  def top_words(n)
+  end
+
   private
 
   def training_directory

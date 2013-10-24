@@ -2,18 +2,20 @@ require_relative 'predictor'
 
 class AnswerPredictor < Predictor
   def train!
-    @data = {
-      astronomy: {
-        counts: {
-          "stars" => 100,
-          "galaxy" => 80
-        },
-        total: 180,
-      },
-      physics: {
-        counts: {}
-      }
-    }
+    # @data looks like:
+    #
+    # {
+    #   astronomy: {
+    #     counts: {
+    #       "stars" => 100,
+    #       "galaxy" => 80
+    #     },
+    #     total: 180,
+    #   },
+    #   physics: {
+    #     ...
+    #   }
+    # }
     @data = {}
 
     @all_books.each do |category, books|
@@ -33,8 +35,6 @@ class AnswerPredictor < Predictor
         @data[category][:total] = counts
       end
     end
-
-    puts @data
   end
 
   def predict(str)
@@ -54,8 +54,6 @@ class AnswerPredictor < Predictor
         end
       end
     end
-
-    puts matches
 
     # grouped = matches.group_by { |k, v| v }
     # sorted = grouped.to_a.sort_by { |counts, category_counts| counts }

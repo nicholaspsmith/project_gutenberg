@@ -23,16 +23,13 @@ class AnswerPredictor < Predictor
         counts: Hash.new(0), # Counts for each word
         total: 0             # Total number of words
       }
-
       books.each do |filename, book|
         tokens = tokenize(book)
-        counts = 0
         tokens.each do |token|
           next unless good_token?(token)
-          counts += 1
+          @data[category][:total] += 1
           @data[category][:counts][token] += 1
         end
-        @data[category][:total] = counts
       end
     end
   end

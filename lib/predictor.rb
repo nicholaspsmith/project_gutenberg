@@ -2,7 +2,7 @@ require 'set'
 require 'find'
 
 class Predictor
-  CATEGORIES = [:astronomy, :philosophy, :physics, :religion]
+  CATEGORIES = [:astronomy, :philosophy, :physics, :religion, :archeology]
   STOP_WORDS = Set.new(File.read('data/stopwords.txt').split(','))
 
   # Hash of array of strings.

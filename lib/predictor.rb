@@ -3,6 +3,7 @@ require 'find'
 
 class Predictor
   CATEGORIES = [:astronomy, :philosophy, :physics, :religion]
+  STOP_WORDS = Set.new(File.read('data/stopwords.txt').split(','))
 
   # Hash of array of strings.
   #
@@ -66,8 +67,21 @@ class Predictor
 
   private
 
-  def training_directory
-    @sample ? "sample" : "training"
+  # Returns true if you should use this token.
+  def good_token?(token)
+    !STOP_WORDS.include?(token) && token.size > 2
+  end
+
+  # Given a string, split into array of words.
+  def tokenize(string)
+    require 'iconv' unless String.method_defined?(:encode)
+    if String.method_defined?(:encode)
+      string.encode!('UTF-8', 'UTF-8', :invalid => :replace)
+    else
+      ic = Iconv.new('UTF-8', 'UTF-8//IGNORE')
+      string = ic.iconv(string)
+    end
+    string.split(/\W+/).map(&:downcase) # Split by non-words
   end
 
   # dataset - The dataset to use: sample, training, test.

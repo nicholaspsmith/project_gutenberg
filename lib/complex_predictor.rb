@@ -6,20 +6,6 @@ class ComplexPredictor < Predictor
   #
   # Returns nothing.
   def train!
-    # @data looks like:
-    #
-    # {
-    #   astronomy: {
-    #     counts: {
-    #       "stars" => 100,
-    #       "galaxy" => 80
-    #     },
-    #     total: 180,
-    #   },
-    #   physics: {
-    #     ...
-    #   }
-    # }
     @data = {}
   end
 
@@ -29,7 +15,7 @@ class ComplexPredictor < Predictor
   #
   # Returns a category.
   def predict(tokens)
-    # Always predict astronomy.
+    # Always predict astronomy, for now.
     :astronomy
   end
 end

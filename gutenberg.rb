@@ -1,6 +1,5 @@
 require_relative 'lib/simple_predictor'
 require_relative 'lib/complex_predictor'
-require_relative 'lib/answer_predictor'
 
 def run!(predictor_klass, opts={})
   puts "+----------------------------------------------------+"

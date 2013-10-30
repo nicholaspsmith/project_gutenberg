@@ -23,8 +23,7 @@ class AnswerPredictor < Predictor
         counts: Hash.new(0), # Counts for each word
         total: 0             # Total number of words
       }
-      books.each do |filename, book|
-        tokens = tokenize(book)
+      books.each do |filename, tokens|
         tokens.each do |token|
           next unless good_token?(token)
           @data[category][:total] += 1
@@ -34,13 +33,12 @@ class AnswerPredictor < Predictor
     end
   end
 
-  def predict(str)
+  def predict(tokens)
     matches = {}
     CATEGORIES.each do |category|
       matches[category] = 0
     end
 
-    tokens = tokenize(str)
     tokens.each do |token|
       @data.each do |category, data|
         counts = data[:counts][token]
@@ -51,11 +49,6 @@ class AnswerPredictor < Predictor
         end
       end
     end
-
-    # grouped = matches.group_by { |k, v| v }
-    # sorted = grouped.to_a.sort_by { |counts, category_counts| counts }
-    # highest_count_categories = sorted.first.last
-    # highest_count_categories.first.first
 
     # If there are ties, pick arbitrary.
     winner = matches.to_a.sort_by { |category, count| -count }.first

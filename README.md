@@ -234,3 +234,7 @@ probably won't show up in the physics category.
 Figure out how to use the TF-IDF formula to train and predict your predictor.
 
 A good paper is: http://www.cs.rutgers.edu/~mlittman/courses/ml03/iCML03/papers/ramos.pdf
+
+# Legal
+
+Copyright Elben Shira

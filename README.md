@@ -105,11 +105,10 @@ NEWTON'S BOOK ON GRAVITY
 
 by Sir Isaac Newton
 
-I love gravity. It is energy and velocity. Its energy is as numerous as the
-stars. Gravity.
+I love gravity. Its energy is as numerous as the stars. Gravity.
 ```
 
-From Newton's book, we analyze each token and compare against `@data` like this:
+We analyze each token and compare against `@data` like this:
 
 ```
 matches = {
@@ -123,6 +122,15 @@ for each token in Newton's book:
       matches[category] += occurences-of-token-in-category / total-tokens-in-category
 
 return the category in matches with the highest value
+```
+
+For Newton's book we would have:
+
+```ruby
+matches = {
+  astronomy: 0.5555    # 100 / 180 (1 stars)
+  physics:   1.0666    # (55+55+50) / 150 (2 gravity, 1 energy)
+}
 ```
 
 ### Running ComplexPredictor

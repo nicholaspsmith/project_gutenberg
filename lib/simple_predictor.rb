@@ -6,6 +6,11 @@ require_relative 'predictor'
 # ComplexPredictor.
 #
 class SimplePredictor < Predictor
+
+  # Public: Trains the predictor on books in our dataset. This method is called
+  # before the predict() method is called.
+  #
+  # Returns nothing.
   def train!
     # @data looks like:
     #
@@ -33,6 +38,11 @@ class SimplePredictor < Predictor
     end
   end
 
+  # Public: Predicts category.
+  #
+  # tokens - A list of tokens (words).
+  #
+  # Returns a category.
   def predict(tokens)
     # Find the category that has the most similar word-count.
     #

@@ -125,6 +125,65 @@ for each token in Newton's book:
 return the category in matches with the highest value
 ```
 
+### Running ComplexPredictor
+
+Let's see how well our `ComplexPredictor` does. Run:
+
+    $ ruby gutenberg.rb
+
+And you should get back something like this:
+
+```
++----------------------------------------------------+
+| ComplexPredictor                                   |
++----------------------------------------------------+
+Loading books...
+Loading books took 7.116586 seconds.
+Training...
+Training took 3.0e-06 seconds.
+Predicting...
+Correct! Predicted astronomy. data/test/astronomy/22157-0.txt.
+Correct! Predicted astronomy. data/test/astronomy/8hsrs10u.txt.
+Correct! Predicted astronomy. data/test/astronomy/pg16767.txt.
+Correct! Predicted astronomy. data/test/astronomy/pg25267.txt.
+Correct! Predicted astronomy. data/test/astronomy/pg27477.txt.
+Correct! Predicted astronomy. data/test/astronomy/pg28570.txt.
+Correct! Predicted astronomy. data/test/astronomy/pg4065.txt.
+Wrong.   Predicted astronomy instead of philosophy. data/test/philosophy/11100-0.txt.
+Wrong.   Predicted astronomy instead of philosophy. data/test/philosophy/pg13316.txt.
+Wrong.   Predicted astronomy instead of philosophy. data/test/philosophy/pg1497.txt.
+Wrong.   Predicted astronomy instead of philosophy. data/test/philosophy/pg16712.txt.
+Wrong.   Predicted astronomy instead of philosophy. data/test/philosophy/pg22283.txt.
+Wrong.   Predicted astronomy instead of philosophy. data/test/philosophy/pg5827.txt.
+Wrong.   Predicted astronomy instead of physics. data/test/physics/32857-t.tex.
+Wrong.   Predicted astronomy instead of physics. data/test/physics/36525-t.tex.
+Wrong.   Predicted astronomy instead of physics. data/test/physics/pg10773.txt.
+Wrong.   Predicted astronomy instead of physics. data/test/physics/pg31624.txt.
+Wrong.   Predicted astronomy instead of religion. data/test/religion/pg15836.txt.
+Wrong.   Predicted astronomy instead of religion. data/test/religion/pg21190.txt.
+Wrong.   Predicted astronomy instead of religion. data/test/religion/pg7883.txt.
+Wrong.   Predicted astronomy instead of religion. data/test/religion/pg8070.txt.
+Wrong.   Predicted astronomy instead of religion. data/test/religion/pg8200.txt.
+Wrong.   Predicted astronomy instead of archeology. data/test/archeology/22153-0.txt.
+Wrong.   Predicted astronomy instead of archeology. data/test/archeology/pg13575.txt.
+Wrong.   Predicted astronomy instead of archeology. data/test/archeology/pg17606.txt.
+Wrong.   Predicted astronomy instead of archeology. data/test/archeology/pg17987.txt.
+Wrong.   Predicted astronomy instead of archeology. data/test/archeology/pg18931.txt.
+Wrong.   Predicted astronomy instead of archeology. data/test/archeology/pg19921.txt.
+Wrong.   Predicted astronomy instead of archeology. data/test/archeology/pg23691.txt.
+Wrong.   Predicted astronomy instead of archeology. data/test/archeology/pg4248.txt.
+Accuracy: 0.23333333333333334
+Predictions took 2.78214 seconds.
+```
+
+Your accuracy should be higher than 23%, as the above output is from an
+algorithm that predicts only `:astronomy`.
+
+### Let's Go
+
+You should have enough information to get started. If you need help, please
+don't hesitate to ask an instructor.
+
 # Extra Challenges
 
 In case you didn't have enough fun, here are some ideas on how you could extend

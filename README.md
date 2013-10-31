@@ -128,10 +128,12 @@ For Newton's book we would have:
 
 ```ruby
 matches = {
-  astronomy: 0.5555    # 100 / 180 (1 stars)
-  physics:   1.0666    # (55+55+50) / 150 (2 gravity, 1 energy)
+  astronomy: 0.5555  # 100 / 180        from 1 stars
+  physics:   1.0666  # (55+55+50) / 150 from 2 gravity, 1 energy
 }
 ```
+
+And so, for Newton's book, we predict `:physics` since it has the highest score.
 
 ### Running ComplexPredictor
 

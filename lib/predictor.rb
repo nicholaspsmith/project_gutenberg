@@ -42,7 +42,7 @@ class Predictor
   # Returns true if you should use this token. In our project, "token" is
   # synonymous with "word".
   def good_token?(token)
-    !STOP_WORDS.include?(token) && token.size > 2
+    !STOP_WORDS.include?(token) && token.size > 5
   end
 
   #############################################################################
@@ -88,20 +88,14 @@ class Predictor
   #
   # tokensize("hello world")
   def tokenize(string)
-    puts string.encoding.inspect
-    # require 'iconv' unless String.method_defined?(:encode)
-    # if String.method_defined?(:encode)
-    begin
+    require 'iconv' unless String.method_defined?(:encode)
+    if String.method_defined?(:encode)
       string.encode!('UTF-8', 'UTF-8', :invalid => :replace, :undef => :replace)
-    # else
-    #   ic = Iconv.new('UTF-8', 'UTF-8//IGNORE')
-    #   string = ic.iconv(string)
-    # end
-    string.split(/\W+/).map(&:downcase) # Split by non-words
-    rescue
-      puts "FAILED"
-      []
+    else
+      ic = Iconv.new('UTF-8', 'UTF-8//IGNORE')
+      string = ic.iconv(string)
     end
+    string.split(/\W+/).map(&:downcase) # Split by non-words
   end
 
   # Internal: Load books from files.
@@ -121,7 +115,6 @@ class Predictor
       Find.find("data/#{dataset}/#{category}") do |file|
         next if File.directory?(file)
         next if file.split("/").last[0] == "." # Ignore hidden files
-        #puts file
 
         content = tokenize(File.read(file))
         books[category] << [file, content]

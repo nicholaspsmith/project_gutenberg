@@ -1,3 +1,6 @@
+# for instructions, go to:
+# https://bitbucket.org/elben/makersquare-project-gutenberg/overview
+
 require_relative 'lib/simple_predictor'
 require_relative 'lib/complex_predictor'
 

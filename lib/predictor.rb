@@ -121,7 +121,7 @@ class Predictor
       Find.find("data/#{dataset}/#{category}") do |file|
         next if File.directory?(file)
         next if file.split("/").last[0] == "." # Ignore hidden files
-        puts file
+        #puts file
 
         content = tokenize(File.read(file))
         books[category] << [file, content]

@@ -7,6 +7,18 @@ class ComplexPredictor < Predictor
   # Returns nothing.
   def train!
     @data = {}
+
+    
+    @all_books.each do |category, books|
+      @data[category] = {
+        words: 0,
+        books: 0
+      }
+      books.each do |filename, tokens|
+        @data[category][:words] += tokens.count
+        @data[category][:books] += 1
+      end
+    end
   end
 
   # Public: Predicts category.
